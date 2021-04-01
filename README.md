@@ -1,6 +1,3 @@
-# 100DaysOfSwiftUI
-Follow the course and do the projects at: https://www.hackingwithswift.com/100/swiftui
-
 ## Day 1 - Day 4
 *  variables, simple data types, and string interpolation
 *  arrays, dictionaries, sets, and enums
