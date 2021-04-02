@@ -11,3 +11,10 @@
 7. You can attach raw values to enums so they can be created from integers or strings, or you can add associated values to store additional information about each case.
 * operators and conditions
 * loops, loops, and more loops
+
+* Optinal value
+An optional value either contains a value or contains nil to indicate that a value is missing. "if let" can be used to handle the optinal value:
+```
+if let name = optionalName {
+    greeting = "hello, \(name)" // only if name is not nil
+} 
