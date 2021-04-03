@@ -10,7 +10,6 @@
 6. Enums are a way of grouping related values so you can use them without spelling mistakes.
 7. You can attach raw values to enums so they can be created from integers or strings, or you can add associated values to store additional information about each case.
 * operators and conditions
-* loops, loops, and more loops
 
 * Optinal value
 An optional value either contains a value or contains nil to indicate that a value is missing. "if let" can be used to handle the optinal value:
@@ -18,3 +17,11 @@ An optional value either contains a value or contains nil to indicate that a val
 if let name = optionalName {
     greeting = "hello, \(name)" // only if name is not nil
 } 
+```
+## Looping
+* Break outer label
+## Function
+* Return type: -> Int
+* square(number: 5)
+* sum(up num : Int) sum(up: 5)
+* sum(num: Int = 0) sum()
