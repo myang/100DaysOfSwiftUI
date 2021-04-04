@@ -25,3 +25,5 @@ if let name = optionalName {
 * square(number: 5)
 * sum(up num : Int) sum(up: 5)
 * sum(num: Int = 0) sum()
+## Types
+* var number = 2021.0404 the default type is Double, not Float
