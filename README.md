@@ -30,3 +30,6 @@ if let name = optionalName {
 * throw, do try catch 
 ## Types
 * var number = 2021.0404 the default type is Double, not Float
+
+## Closure
+* tail syntax
