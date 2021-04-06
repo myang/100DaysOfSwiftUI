@@ -33,3 +33,4 @@ if let name = optionalName {
 
 ## Closure
 * tail syntax
+* return a closure with its own parameters 
