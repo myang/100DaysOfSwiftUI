@@ -20,6 +20,7 @@ if let name = optionalName {
 ```
 ## Looping
 * Break outer label
+
 ## Function
 * Return type: -> Int
 * square(number: 5)
@@ -28,9 +29,16 @@ if let name = optionalName {
 * variadic funtions
 * add(num: inout Int) add(num: &a)
 * throw, do try catch 
+
 ## Types
 * var number = 2021.0404 the default type is Double, not Float
 
 ## Closure
 * tail syntax
-* return a closure with its own parameters 
+* return a closure with its own parameters
+
+## Protocol and Extension
+* Protocols describe what methods and properties a conforming type must have, but don’t provide the implementations of those methods.
+* You can build protocols on top of other protocols, similar to classes.
+* Extensions let you add methods and computed properties to specific types such as Int.
+* Protocol extensions let you add methods and computed properties to protocols
