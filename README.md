@@ -41,4 +41,4 @@ if let name = optionalName {
 * Protocols describe what methods and properties a conforming type must have, but don’t provide the implementations of those methods.
 * You can build protocols on top of other protocols, similar to classes.
 * Extensions let you add methods and computed properties to specific types such as Int.
-* Protocol extensions let you add methods and computed properties to protocols
+* Protocol extensions let you add methods and computed properties to protocols (as default implementation).
