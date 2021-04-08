@@ -42,3 +42,9 @@ if let name = optionalName {
 * You can build protocols on top of other protocols, similar to classes.
 * Extensions let you add methods and computed properties to specific types such as Int.
 * Protocol extensions let you add methods and computed properties to protocols (as default implementation).
+
+## Struct
+* Self points to whatever instance of the struct is currently being used.
+* Prefer using struct over class.
+* mutating, init(), static, private
+
