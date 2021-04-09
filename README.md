@@ -47,5 +47,12 @@ if let name = optionalName {
 * Self points to whatever instance of the struct is currently being used.
 * Prefer using struct over class.
 * mutating, init(), static, private
+
+# Class
 * SwiftUI uses structs extensively for its UI design.
-* It uses classes extensively for its data: when you show data from some object on the screen, or when you pass data between your layouts, you’ll usually be using classes
+* It uses classes extensively for its data: when you show data from some object on the screen, or when you pass data between your layouts, you’ll usually be using classes.
+* classes never come with a memberwise initializer. This means if you have properties in your class, you must always create your own initializer: init().
+* always call super.init() from child class init()
+* use override fnnc
+* copying a class both point to the same class
+* a constant class with a variable property, that property can be changed
