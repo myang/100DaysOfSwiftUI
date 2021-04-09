@@ -47,4 +47,4 @@ if let name = optionalName {
 * Self points to whatever instance of the struct is currently being used.
 * Prefer using struct over class.
 * mutating, init(), static, private
-
+* impl method(&self)
