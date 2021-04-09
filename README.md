@@ -47,4 +47,5 @@ if let name = optionalName {
 * Self points to whatever instance of the struct is currently being used.
 * Prefer using struct over class.
 * mutating, init(), static, private
-* impl method(&self)
+* SwiftUI uses structs extensively for its UI design.
+* It uses classes extensively for its data: when you show data from some object on the screen, or when you pass data between your layouts, you’ll usually be using classes
