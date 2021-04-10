@@ -49,7 +49,7 @@ if let name = optionalName {
 * mutating, init(), static, private
 * value type, different from a class which is a reference type
 
-# Class
+## Class
 * SwiftUI uses structs extensively for its UI design.
 * It uses classes extensively for its data: when you show data from some object on the screen, or when you pass data between your layouts, you’ll usually be using classes.
 * classes never come with a memberwise initializer. This means if you have properties in your class, you must always create your own initializer: init().
@@ -58,7 +58,7 @@ if let name = optionalName {
 * copying a class both point to the same class
 * a constant class with a variable property, that property can be changed. Because struct is treated like a value, if you change part of it, the whole struct will be changed. But a class is allocated in heap memory. So its variable properties can be changed even the class is a constant.
 
-# Optional
+## Optional
 * use try? to convert the throwable function to optional: if let num = try? num else {}.
 * use try! when you are sure the function will not throw
 * typecasting: 
