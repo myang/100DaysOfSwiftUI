@@ -67,3 +67,6 @@ if let dog = pet as? Dog {
      dog.makeNoise()
 }
 ```
+## Review
+* struct/class property observer: willSet{}, didSet{}
+* computed property: var age: Int{ get{... return age*7} }
