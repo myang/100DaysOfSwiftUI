@@ -70,3 +70,8 @@ if let dog = pet as? Dog {
 ## Review
 * struct/class property observer: willSet{}, didSet{}
 * computed property: var age: Int{ get{... return age*7} }
+* access control:
+  * **Internal**: within the app
+  * **File Private**: within the source file
+  * **Private**: within the type or its extensions
+  * **Closure**: trailing closure: call a func: func1() {...} 
