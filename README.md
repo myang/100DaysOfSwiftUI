@@ -75,3 +75,5 @@ if let dog = pet as? Dog {
   * **File Private**: within the source file
   * **Private**: within the type or its extensions
   * **Closure**: trailing closure: call a func: func1() {...} 
+  * **Protocol**: no implementation
+  * **Extension**: provide default implementation to types and protocols.
