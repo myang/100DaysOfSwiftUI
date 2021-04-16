@@ -77,3 +77,6 @@ if let dog = pet as? Dog {
   * **Closure**: trailing closure: call a func: func1() {...} 
   * **Protocol**: no implementation
   * **Extension**: provide default implementation to types and protocols.
+
+## WeSplit
+
