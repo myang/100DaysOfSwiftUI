@@ -7,10 +7,19 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View { // View is a protocol
+    let students = ["Harry", "Alice", "Bob"]
+    @State private var chosen = 0
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Picker("Choose a student", selection: $chosen) {
+                ForEach(0 ..< students.count) {
+                    Text(self.students[$0])
+                }
+            }
+            Text("Chosen: # \(students[chosen])")
+        }
     }
 }
 
