@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct ContentView: View { // View is a protocol
-    let students = ["Harry", "Alice", "Bob"]
     @State private var checkAmount = ""
     @State private var numberOfPeople = 2
     @State private var tipPercentage = 2
     
+    let tipPercentages = [5, 10, 15, 20, 25, 30]
+
+    var totalPerPreson: Double {
+        let peopleCount = Double(numberOfPeople + 2)
+        let tipSelection = Double(tipPercentages[tipPercentage])
+        let orderAmount = Double(checkAmount) ?? 0
+
+        let tipValue = orderAmount / 100 * tipSelection
+        let grandTotal = orderAmount + tipValue
+        let amountPerPerson = grandTotal / peopleCount
+
+        return amountPerPerson
+    }
+
     var body: some View {
         NavigationView {
             Form {
@@ -22,7 +35,7 @@ struct ContentView: View { // View is a protocol
                 }
 
                 Section {
-                    Text("$\(checkAmount)")
+                    Text("$\(totalPerPreson, specifier: "%.2f")")
                 }
                 
                 Picker("Number of people", selection: $numberOfPeople) {
