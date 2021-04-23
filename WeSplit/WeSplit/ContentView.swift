@@ -12,7 +12,7 @@ struct ContentView: View { // View is a protocol
     @State private var numberOfPeople = 2
     @State private var tipPercentage = 2
     
-    let tipPercentages = [5, 10, 15, 20, 25, 30]
+    let tipPercentages = [10, 15, 20, 25, 0]
 
     var totalPerPreson: Double {
         let peopleCount = Double(numberOfPeople + 2)
