@@ -83,3 +83,7 @@ if let dog = pet as? Dog {
 * body is a computed property which is the only thing required by the View protocol.
 * 10 items is the max number of child views.
 * ContentView is a struct which is immutable. @state used for storing the variable value outside.
+
+## UnitConverter
+* consider to use enum
+* 
