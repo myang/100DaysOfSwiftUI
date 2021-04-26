@@ -12,17 +12,19 @@ struct ContentView: View {
     @State private var unitIndex = 0
     
     let fromUnits = [
-        "Fahrenheit",
-        "Celsius",
+        "ºF",
+        "ºC",
         "Feet",
+        "Knot",
         "Ounce",
         "Gallon"
     ]
 
     let toUnits = [
-        "Celsius",
-        "Fahrenheit",
+        "ºC",
+        "ºF",
         "Meter",
+        "Km/h",
         "Gram",
         "Liter"
     ]
@@ -40,12 +42,14 @@ struct ContentView: View {
         let number = Double(quantity) ?? 0
         
         switch fromUnits[unitIndex] {
-        case "Fahrenheit":
+        case "ºF":
             converted = (number - 32) * 5 / 9
-        case "Celsius":
+        case "ºC":
             converted = (number * 9 / 5) + 32
         case "Feet":
             converted = number / 3.281
+        case "Knot":
+            converted = number / 1.852
         case "Ounce":
             converted = number * 28.35
         case "Gallon":
