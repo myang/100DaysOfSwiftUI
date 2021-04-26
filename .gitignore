@@ -1,5 +1,6 @@
 # igonre everything starting from current folder
 /*
+*.xcodeproj
 
 # white list
 !.gitignore
