@@ -8,15 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var quantity = ""
+    @State private var quantity = "1"
     @State private var unitIndex = 0
     
-    let unitNames = [
+    let fromUnits = [
         "Fahrenheit",
         "Celsius",
         "Feet",
         "Ounce",
         "Gallon"
+    ]
+
+    let toUnits = [
+        "Celsius",
+        "Fahrenheit",
+        "Meter",
+        "Gram",
+        "Liter"
     ]
     /*
     enum Units {
@@ -29,9 +37,9 @@ struct ContentView: View {
 */
     var result: Double {
         var converted: Double
-        var number = Double(quantity) ?? 0
+        let number = Double(quantity) ?? 0
         
-        switch unitNames[unitIndex] {
+        switch fromUnits[unitIndex] {
         case "Fahrenheit":
             converted = (number - 32) * 5 / 9
         case "Celsius":
@@ -51,25 +59,25 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section (header: Text("Input a value")) {
-                    TextField("Amount:", text: $quantity)
-                        .keyboardType(.numberPad)
-                }
-
-                Section(header: Text("Choose a unit you want to convert")) {
+                Section(header: Text("Choose a unit you want to convert from")) {
                     Picker("Units", selection: $unitIndex) {
-                        ForEach(0 ..< unitNames.count) {
-                            Text("\(self.unitNames[$0])")
+                        ForEach(0 ..< fromUnits.count) {
+                            Text("\(self.fromUnits[$0])")
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 
+                Section (header: Text("Input a value")) {
+                    TextField("\(quantity)", text: $quantity)
+                        .keyboardType(.numberPad)
+                }
+
                 Section (header: Text("Convert to")) {
-                    Text("$\(result, specifier: "%.2f")")
+                    Text("\(result, specifier: "%.2f") \(toUnits[unitIndex])")
                 }
                 
-            }.navigationBarTitle("WeSplit")
+            }.navigationBarTitle("Unit Converter")
         }
     }
 }
