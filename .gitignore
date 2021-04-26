@@ -1,4 +1,7 @@
-*
+# igonre everything starting from current folder
+/*
+
+# white list
 !.gitignore
 !*.swift
-!info.plist
+!README.md
