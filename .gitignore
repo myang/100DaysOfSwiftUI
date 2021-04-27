@@ -1,8 +1,12 @@
 # igonre everything starting from current folder
 /*
-*.xcodeproj
+*.xcodeproj/
+*.xcuserstate
 
 # white list
 !.gitignore
 !*.swift
+# **/ match directories and its files anywhere
+!**/Asset.xcassets/
+
 !README.md
