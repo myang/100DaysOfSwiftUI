@@ -1,7 +1,8 @@
 # igonre everything starting from current folder
-/*
-*.xcodeproj/
+# /*
+**/*.xcodeproj/
 *.xcuserstate
+**/Products/
 
 # white list
 !.gitignore
