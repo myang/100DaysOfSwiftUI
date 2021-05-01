@@ -17,12 +17,15 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color.blue.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.black]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack(spacing: 30){
                 VStack {
                     Text("Tap the flag of")
                         .foregroundColor(.white)
                     Text(countries[correctAnswer])
+                        .font(.largeTitle)
+                        .fontWeight(.black)
                         .foregroundColor(.white)
                 }
             
@@ -33,13 +36,17 @@ struct ContentView: View {
                     }) {
                         Image(self.countries[number])
                             .renderingMode(.original)
+                            .clipShape(Capsule())
+                            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
                     }
                 }
                 Spacer()
             }
         }
         .alert(isPresented: $showingScore) {
-            Alert(title: <#T##Text#>(scoreTitle), message: Text?Text("Your score is ???"),, dismissButton: <#T##Alert.Button?#>)
+            Alert(title: <#T##Text#>(scoreTitle), message: Text("Your score is ???"), dismissButton: .default(Text("Continue")) {
+                    self.askQuestion()
+            })
         }
     }
     
@@ -54,7 +61,7 @@ struct ContentView: View {
     }
 
     func askQuestion() {
-        countries.shuffled()
+        countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
 }
