@@ -46,7 +46,11 @@ struct ContentView: View {
             }
         }
         .alert(isPresented: $showingScore) {
-            Alert(title: Text(scoreTitle), message: Text("Your score is \(score)"), dismissButton: .default(Text("Continue")) {
+            Alert(title: Text(scoreTitle),
+                  message: Text(scoreTitle == "Correct" ?
+                                    "Your score is \(score)" :
+                                    "It's \(self.countries[correctAnswer])"),
+                  dismissButton: .default(Text("Continue")) {
                     self.askQuestion()
             })
         }
