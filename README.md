@@ -86,4 +86,11 @@ if let dog = pet as? Dog {
 
 ## UnitConverter
 * consider to use enum
+
+## Views and Modifiers
+* the way modifiers work: each one creates a **new** struct with that modifier applied, rather than just setting a property on the view.
+* “opaque return types”, which you can see in action every time you write some View. This means “one specific type that conforms to the View protocol, but we don’t want to say what.”
+  * We must always return the same type of view.
+  * Even though we don’t know what view type is going back, the compiler does
+* if we have four text views in a VStack and want to give them all the same font modifier, we could apply the modifier to the VStack directly and have that change apply to all four text views. This is called an environment modifier.
 * 
