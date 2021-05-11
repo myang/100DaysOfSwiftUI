@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     private let moves = ["Rock", "Paper", "Scissors"]
+    private let totalRounds = 3
     @State private var move = Int.random(in: 0...2)
     @State private var shouldWin = Bool.random()
     @State private var choice = 0
     @State private var score = 0
-    @State private var count = 0
+    @State private var round = 0
     @State private var showResult = false
     @State private var result = ""
-    @State private var scoreChange = ""
+    @State private var scoreMessage = ""
     
     var body: some View {
         VStack {
@@ -43,7 +44,7 @@ struct ContentView: View {
       }
         .alert(isPresented: $showResult) {
             Alert(title: Text("\(result)"),
-            message: Text("\(scoreChange)"),
+            message: Text("\(scoreMessage)"),
             dismissButton: .default(Text("Continue")) {
                 self.reset()
             })
@@ -51,11 +52,19 @@ struct ContentView: View {
     }
 
     func moveSelected(_ num: Int) {
-        if shouldWin {
+        showResult = true
+        round += 1
+
+        if (shouldWin && num == (move + 1) % 3) ||
+            (!shouldWin && num == (move + 2) % 3) {
+            score += 1
             result = "Correct"
-            scoreChange = "+1"
+            scoreMessage = (round == totalRounds) ? "Total Score: \(score)" : "Score: +1"
+            
         } else {
-            result = "Correct"
+            score -= 1
+            result = "Wrong"
+            scoreMessage = (round == totalRounds) ? "Total Score: \(score)" : "Score: -1"
 
         }
     }
@@ -63,6 +72,10 @@ struct ContentView: View {
     func reset() {
         move = Int.random(in: 0...2)
         shouldWin = Bool.random()
+        if (round == totalRounds) {
+            round = 0
+            score = 0
+        }
     }
 }
 
