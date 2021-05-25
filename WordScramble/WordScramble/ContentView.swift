@@ -22,6 +22,14 @@ struct ContentView: View {
                 TextField("Enter your word", text: $newWord, onCommit: addNewWord)
                     .textFieldStyle(RoundedBorderTextFieldStyle()).autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/).padding()
                 
+                Button(action: {
+                    startGame()
+                }) {
+                    Text("Reset")
+                        .font(.headline)
+                        .foregroundColor(Color(UIColor.systemTeal))
+                }.padding()
+
                 List(usedWords, id: \.self) {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
@@ -38,7 +46,7 @@ struct ContentView: View {
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
-        guard answer.count  > 0 else {
+        guard answer.count  > 2 else {
             return
         }
         
@@ -66,6 +74,8 @@ struct ContentView: View {
             if let startWords = try? String(contentsOf: startWordsURL) {
                 let allWords = startWords.components(separatedBy: "\n")
                 rootWord = allWords.randomElement() ?? "silkworm"
+                
+                usedWords.removeAll()
                 return
             }
         }
