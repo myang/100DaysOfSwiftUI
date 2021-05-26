@@ -11,20 +11,24 @@ struct ContentView: View {
     @State private var animationAmount: CGFloat = 1
     
     var body: some View {
-        VStack {
-            Text("Hello, world!")
-                .padding()
-
+        print(animationAmount)
+        
+        return VStack {
+            Stepper("Scale amount", value: $animationAmount.animation(
+                        Animation.easeInOut(duration: 1)
+                            .repeatCount(3, autoreverses: true)
+            ), in: 1...10)
+            
+            //Spacer()
+            
             Button("Tap Me") {
-                self.animationAmount += 1
+                //self.animationAmount += 1
             }
-            .padding(50)
+            .padding(40)
             .background(Color.red)
             .foregroundColor(.white)
-            .clipShape(Circle())
+            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
             .scaleEffect(animationAmount)
-            .animation(.easeInOut(duration: 2))
-            //.blur(radius: (animationAmount - 1) * 2)
         }
     }
 }
