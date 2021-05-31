@@ -15,7 +15,9 @@ struct ContentView: View {
     @State private var score = 0
     @State private var scoreTitle = ""
     @State private var scoreMessage = ""
-
+    @State private var animating = false
+    @State private var degree = 0.0
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
@@ -41,6 +43,8 @@ struct ContentView: View {
                             .clipShape(Capsule())
                             .overlay(Capsule().stroke(Color.black, lineWidth: 1))
                     }
+                    .opacity(animating && number != correctAnswer ? 0.1 : 1)
+                    .rotation3DEffect(.degrees(number == correctAnswer ? degree : 0), axis: (x: 0, y: 1, z: 0))
                 }
                 
                 Spacer()
@@ -60,6 +64,9 @@ struct ContentView: View {
             score += 1
             scoreTitle = "correct"
             scoreMessage = "Score:\(score)"
+            withAnimation {
+                animating = true
+                degree += 180}
         } else {
             scoreTitle = "wrong"
             scoreMessage = "It's \(self.countries[num])"
@@ -71,6 +78,7 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        animating = false
     }
 }
 
