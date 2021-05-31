@@ -8,28 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var animationAmount: CGFloat = 1
+    let letters = Array("Hello SwiftUI")
+    //@State private var animationAmount = 0.0
+    @State private var enabled = false
+    @State private var dragAmount = CGSize.zero
+    
     
     var body: some View {
-        print(animationAmount)
-        
-        return VStack {
-            Stepper("Scale amount", value: $animationAmount.animation(
-                        Animation.easeInOut(duration: 1)
-                            .repeatCount(3, autoreverses: true)
-            ), in: 1...10)
-            
-            //Spacer()
-            
-            Button("Tap Me") {
-                //self.animationAmount += 1
+        VStack {
+            Button("Tape Me") {
+                withAnimation {
+                    self.enabled.toggle()
+                }
             }
-            .padding(40)
-            .background(Color.red)
-            .foregroundColor(.white)
-            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-            .scaleEffect(animationAmount)
+            if enabled {
+                Rectangle()
+                    .fill(Color.red)
+                    .frame(width: 200, height: 200)
+                    .transition(.asymmetric(insertion: .scale, removal: .slide))
+            }
         }
+        
+        HStack(spacing: 0) {
+            ForEach(0..<letters.count) { num in
+                Text(String(self.letters[num]))
+                    .padding(5)
+                    .font(.title)
+                    .background(self.enabled ? Color.blue : Color.red)
+                    .offset(self.dragAmount)
+                    .animation(Animation.default.delay(Double(num) / 20))
+            }
+        }
+        .gesture(
+            DragGesture()
+                .onChanged {self.dragAmount = $0.translation}
+                .onEnded {_ in
+                    self.dragAmount = .zero
+                    self.enabled.toggle()
+                }
+        )
     }
 }
 
