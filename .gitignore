@@ -1,6 +1,6 @@
 # igonre everything starting from current folder
 # /*
-.DS_Store
+**/.DS_Store
 **/*.xcodeproj/
 *.xcuserstate
 **/Products/
