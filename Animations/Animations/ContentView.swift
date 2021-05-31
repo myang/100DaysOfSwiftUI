@@ -25,7 +25,7 @@ struct ContentView: View {
                 Rectangle()
                     .fill(Color.red)
                     .frame(width: 200, height: 200)
-                    .transition(.asymmetric(insertion: .scale, removal: .slide))
+                    .transition(.pivot)
             }
         }
         
@@ -46,6 +46,24 @@ struct ContentView: View {
                     self.dragAmount = .zero
                     self.enabled.toggle()
                 }
+        )
+    }
+}
+
+struct CornerRotateModifier: ViewModifier {
+    let amount: Double
+    let anchor: UnitPoint
+    
+    func body(content: Content) -> some View {
+        content.rotationEffect(.degrees(amount), anchor: anchor).clipped()
+    }
+}
+
+extension AnyTransition {
+    static var pivot: AnyTransition {
+        .modifier(
+            active: CornerRotateModifier(amount: -90, anchor: .topLeading),
+            identity: CornerRotateModifier(amount: 0, anchor: .topLeading)
         )
     }
 }
