@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     let letters = Array("Hello SwiftUI")
-    //@State private var animationAmount = 0.0
+    @State private var animationAmount = 0.0
     @State private var enabled = false
     @State private var dragAmount = CGSize.zero
     
@@ -17,17 +17,25 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button("Tape Me") {
-                withAnimation {
+                withAnimation /*(.interpolatingSpring(stiffness: 5, damping: 1))*/ {
+                    //self.animationAmount += 360
                     self.enabled.toggle()
                 }
             }
+            .frame(width: 200, height: 200)
+            .background(enabled ? Color.blue : Color.red)
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 30))
+            .rotation3DEffect(.degrees(enabled ? 360 : 0), axis: (x: 0, y: 1, z: 0))
+/*
             if enabled {
                 Rectangle()
                     .fill(Color.red)
                     .frame(width: 200, height: 200)
                     .transition(.pivot)
             }
-        }
+*/
+ }
         
         HStack(spacing: 0) {
             ForEach(0..<letters.count) { num in
