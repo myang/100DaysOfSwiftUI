@@ -93,4 +93,6 @@ if let dog = pet as? Dog {
   * We must always return the same type of view.
   * Even though we don’t know what view type is going back, the compiler does
 * if we have four text views in a VStack and want to give them all the same font modifier, we could apply the modifier to the VStack directly and have that change apply to all four text views. This is called an environment modifier.
-* 
+
+## Animation
+* we don’t tell the button to spin, but instead attach the button’s spin amount to some state, then modify that state as appropriate.
