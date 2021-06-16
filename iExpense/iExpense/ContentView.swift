@@ -7,20 +7,41 @@
 
 import SwiftUI
 
-class User: ObservableObject {
-    @Published var firstName = "Eric"
-    @Published var lastName = "Young"
+struct ExpenseItem: Identifiable {
+    let id = UUID()
+    let name: String
+    let type: String
+    let amount: Int
+}
+
+class Expenses: ObservableObject {
+    @Published var items = [ExpenseItem]()
 }
 
 struct ContentView: View {
-    @ObservedObject var user = User()
-    @State private var showingSheet = false
-    @State private var numbers = [Int]()
-    @State private var currentNumber = 1
+    @ObservedObject var expenses = Expenses()
+
+    //@State private var showingSheet = false
     
     var body: some View {
         NavigationView {
-            VStack {
+            //VStack {
+                List {
+                    ForEach(expenses.items) { item in
+                        Text(item.name)
+                    }
+                    .onDelete(perform: removeItems)
+                }
+                .navigationBarTitle("iExpense")
+                .navigationBarItems(trailing:
+                    Button(action: {
+                        let expense = ExpenseItem(name: "Test", type: "Personal", amount: 5)
+                        self.expenses.items.append(expense)
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                )
+/*
                 Button("Show sheet") {
                     self.showingSheet.toggle()
                 }
@@ -28,24 +49,18 @@ struct ContentView: View {
                     SecondView(name: "@blucode")
                 }
 
-                List {
-                    ForEach(numbers, id: \.self) {
-                        Text("\($0)")
-                    }
-                    .onDelete(perform: removeRows)
-                }
-                
                 Button("Add Number") {
                     self.numbers.append(self.currentNumber)
                     self.currentNumber += 1
                 }
-            }
-            .navigationBarItems(leading: EditButton())
+*/
+            //}
+            //.navigationBarItems(leading: EditButton())
         }
     }
     
-    func removeRows(at offsets: IndexSet) {
-        numbers.remove(atOffsets: offsets)
+    func removeItems(at offsets: IndexSet) {
+        expenses.items.remove(atOffsets: offsets)
     }
 }
 
