@@ -8,51 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
+    let missions: [Mission] = Bundle.main.decode("missions.json")
+    
     var body: some View {
-        VStack {
-            GeometryReader { geo in
-                Image("punkaharju-small")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: geo.size.width)
-            }
-        
-            NavigationView {
-                List(0..<100) { row in
-                    NavigationLink(destination: Text("Detail \(row)")) {
-                        Text("Row \(row)")
+        NavigationView {
+            List(missions) { mission in
+                NavigationLink(destination: Text("Detail view")) {
+                    Image(mission.image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:44, height: 44)
+                    
+                    VStack(alignment: .leading) {
+                        Text(mission.displayName)
+                            .font(.headline)
+                        Text(mission.formattedLuanchDate)
                     }
                 }
-                .navigationBarTitle("SwiftUI")
             }
-            
-            Button("Decode JSON") {
-                let input = """
-                {
-                    "name": "Taylor Swift",
-                    "address": {
-                        "street": "555, Taylor Avenue",
-                        "city": "Nashville"
-                    }
-                }
-                """
-                
-                struct User: Codable {
-                    var name: String
-                    var address: Address
-                }
-                
-                struct Address: Codable {
-                    var street: String
-                    var city: String
-                }
-                
-                let data = Data(input.utf8)
-                let decoder = JSONDecoder()
-                if let user = try? decoder.decode(User.self, from: data) {
-                    print(user.address.street)
-                }
-            }
+            .navigationBarTitle("Moonshot")
         }
     }
 }
