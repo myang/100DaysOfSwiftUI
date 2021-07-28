@@ -8,26 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var petalOffset = -20.0
-    @State private var petalWidth = 100.0
+//    @State private var petalOffset = -20.0
+//    @State private var petalWidth = 100.0
+    @State private var colorCycle = 0.0
     
     var body: some View {
         VStack {
-            Flower(petaloffset: petalOffset, petalWidth: petalWidth)
+//            Flower(petaloffset: petalOffset, petalWidth: petalWidth)
 //                .stroke(Color.red, lineWidth: 1)
-                .fill(Color.red, style: FillStyle(eoFill: true))
-            
-            Text("Offset")
-            Slider(value: $petalOffset, in: -40...40)
-                .padding([.horizontal, .bottom])
-
-            Text("Width")
-            Slider(value: $petalWidth, in: 0...100)
-                .padding(.horizontal)
+//                .fill(Color.red, style: FillStyle(eoFill: true))
+//
+//            Text("Offset")
+//            Slider(value: $petalOffset, in: -40...40)
+//                .padding([.horizontal, .bottom])
+//
+//            Text("Width")
+//            Slider(value: $petalWidth, in: 0...100)
+//                .padding(.horizontal)
             
             Capsule()
                 .strokeBorder(ImagePaint(image: Image("punkaharju"), sourceRect: CGRect(x:0.5, y: 0.0, width: 0.6, height: 1), scale: 0.5), lineWidth: 20)
                 .frame(width: 300, height: 200)
+            
+            ColorCyclingCircle(amount: self.colorCycle)
+                .frame(width: 300, height: 300)
+            
+            Slider(value: $colorCycle)
         }
         
 //        Triangle()
@@ -87,6 +93,35 @@ struct Flower: Shape {
         }
         
         return path
+    }
+}
+
+struct ColorCyclingCircle: View {
+    var amount = 0.0
+    var steps = 100
+    
+    var body: some View {
+        ZStack {
+            ForEach(0..<steps) { value in
+                Circle()
+                    .inset(by: CGFloat(value))
+                    .strokeBorder(LinearGradient(gradient: Gradient(colors: [
+                        self.color(for: value, brightness: 1),
+                        self.color(for: value, brightness: 0.5)
+                    ]), startPoint: .top, endPoint: .bottom), lineWidth: 2)
+            }
+        }
+        .drawingGroup()
+    }
+    
+    func color(for value: Int, brightness: Double) -> Color {
+        var targetHue = Double(value) / Double(self.steps) + self.amount
+        
+        if targetHue > 1 {
+            targetHue -= 1
+        }
+        
+        return Color(hue: targetHue, saturation: 1, brightness: brightness)
     }
 }
 
