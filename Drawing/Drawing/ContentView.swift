@@ -11,8 +11,17 @@ struct ContentView: View {
 //    @State private var petalOffset = -20.0
 //    @State private var petalWidth = 100.0
     @State private var colorCycle = 0.0
+    @State private var insetAmount: CGFloat = 50
     
     var body: some View {
+        Trapezoid(insetAmount: insetAmount)
+            .frame(width: 200, height: 100)
+            .onTapGesture {
+                withAnimation {
+                    self.insetAmount = CGFloat.random(in: 10...90)
+                }
+            }
+        
         VStack {
 //            Flower(petaloffset: petalOffset, petalWidth: petalWidth)
 //                .stroke(Color.red, lineWidth: 1)
@@ -26,20 +35,28 @@ struct ContentView: View {
 //            Slider(value: $petalWidth, in: 0...100)
 //                .padding(.horizontal)
             
-            Capsule()
-                .strokeBorder(ImagePaint(image: Image("punkaharju"), sourceRect: CGRect(x:0.5, y: 0.0, width: 0.6, height: 1), scale: 0.5), lineWidth: 20)
-                .frame(width: 300, height: 200)
+//            Capsule()
+//                .strokeBorder(ImagePaint(image: Image("punkaharju"), sourceRect: CGRect(x:0.5, y: 0.0, width: 0.6, height: 1), scale: 0.5), lineWidth: 20)
+//                .frame(width: 200, height: 100)
             
-            ColorCyclingCircle(amount: self.colorCycle)
-                .frame(width: 300, height: 300)
-            
-            Slider(value: $colorCycle)
+//            ColorCyclingCircle(amount: self.colorCycle)
+//                .frame(width: 200, height: 200)
+//
+//            Slider(value: $colorCycle)
+//
+//            Image("punkaharju")
+//                .colorMultiply(Color.blue)
+//                .resizable()
+//                .frame(width: 300, height: 100)
+//                .scaledToFit()
+//                .saturation(0.3)
+//                .blur(radius: 2)
         }
         
 //        Triangle()
 //        .stroke(Color.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
 //        .frame(width: 200, height: 200)
-//        
+//
 //        Arc(startAngle: .degrees(0), endAngle: .degrees(110), clockwise: true)
 //            .stroke(Color.blue, lineWidth: 10)
 //            .frame(width: 300, height: 300)
@@ -122,6 +139,26 @@ struct ColorCyclingCircle: View {
         }
         
         return Color(hue: targetHue, saturation: 1, brightness: brightness)
+    }
+}
+
+struct Trapezoid: Shape {
+    var insetAmount: CGFloat
+    var animatableData: CGFloat {
+        get {insetAmount}
+        set {self.insetAmount = newValue}
+    }
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: CGPoint(x: 0, y: rect.maxY))
+        path.addLine(to: CGPoint(x: insetAmount, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - insetAmount, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: 0, y: rect.maxY))
+        
+        return path
     }
 }
 
