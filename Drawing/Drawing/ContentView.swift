@@ -24,38 +24,38 @@ struct ContentView: View {
 
 
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer()
-            
-            Spirograph(innerRadius: Int(innerRadius), outerRadius: Int(outerRadius), distance: Int(distance), amount: amount)
-                .stroke(Color(hue: hue, saturation: 1, brightness: 1), lineWidth: 1)
-                .frame(width: 300, height: 300)
-            
-            Spacer()
-            
-            Group {
-                Text("Inner radius: \(Int(innerRadius))")
-                Slider(value: $innerRadius, in: 10...150, step: 1)
-                    .padding([.horizontal, .bottom])
-                
-                Text("Outer radius: \(Int(outerRadius))")
-                Slider(value: $outerRadius, in: 10...150, step: 1)
-                    .padding([.horizontal, .bottom])
-                
-                Text("Distance: \(Int(distance))")
-                Slider(value: $distance, in: 10...150, step: 1)
-                    .padding([.horizontal, .bottom])
-                
-                Text("Amount: \(amount, specifier: "%.2f")")
-                Slider(value: $amount)
-                    .padding([.horizontal, .bottom])
-                
-                Text("Color")
-                Slider(value: $hue)
-                    .padding(.horizontal)
-
-            }
-        }
+//        VStack(spacing: 0) {
+//            Spacer()
+//
+//            Spirograph(innerRadius: Int(innerRadius), outerRadius: Int(outerRadius), distance: Int(distance), amount: amount)
+//                .stroke(Color(hue: hue, saturation: 1, brightness: 1), lineWidth: 1)
+//                .frame(width: 300, height: 300)
+//
+//            Spacer()
+//
+//            Group {
+//                Text("Inner radius: \(Int(innerRadius))")
+//                Slider(value: $innerRadius, in: 10...150, step: 1)
+//                    .padding([.horizontal, .bottom])
+//
+//                Text("Outer radius: \(Int(outerRadius))")
+//                Slider(value: $outerRadius, in: 10...150, step: 1)
+//                    .padding([.horizontal, .bottom])
+//
+//                Text("Distance: \(Int(distance))")
+//                Slider(value: $distance, in: 10...150, step: 1)
+//                    .padding([.horizontal, .bottom])
+//
+//                Text("Amount: \(amount, specifier: "%.2f")")
+//                Slider(value: $amount)
+//                    .padding([.horizontal, .bottom])
+//
+//                Text("Color")
+//                Slider(value: $hue)
+//                    .padding(.horizontal)
+//
+//            }
+//        }
         
 //        Checkerboard(rows: rows, columns: columns)
 //            .onTapGesture {
@@ -73,7 +73,7 @@ struct ContentView: View {
 //                }
 //            }
 //
-//        VStack {
+        VStack {
 //            Flower(petaloffset: petalOffset, petalWidth: petalWidth)
 //                .stroke(Color.red, lineWidth: 1)
 //                .fill(Color.red, style: FillStyle(eoFill: true))
@@ -90,11 +90,15 @@ struct ContentView: View {
 //                .strokeBorder(ImagePaint(image: Image("punkaharju"), sourceRect: CGRect(x:0.5, y: 0.0, width: 0.6, height: 1), scale: 0.5), lineWidth: 20)
 //                .frame(width: 200, height: 100)
             
-//            ColorCyclingCircle(amount: self.colorCycle)
-//                .frame(width: 200, height: 200)
-//
-//            Slider(value: $colorCycle)
-//
+            ColorCyclingCircle(amount: self.colorCycle)
+                .frame(width: 300, height: 150)
+
+            Slider(value: $colorCycle)
+
+            Triangle()
+            .stroke(Color.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+            .frame(width: 200, height: 200)
+    
 //            Image("punkaharju")
 //                .colorMultiply(Color.blue)
 //                .resizable()
@@ -102,12 +106,8 @@ struct ContentView: View {
 //                .scaledToFit()
 //                .saturation(0.3)
 //                .blur(radius: 2)
-//        }
+        }
         
-//        Triangle()
-//        .stroke(Color.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-//        .frame(width: 200, height: 200)
-//
 //        Arc(startAngle: .degrees(0), endAngle: .degrees(110), clockwise: true)
 //            .stroke(Color.blue, lineWidth: 10)
 //            .frame(width: 300, height: 300)
@@ -166,17 +166,17 @@ struct Flower: Shape {
 
 struct ColorCyclingCircle: View {
     var amount = 0.0
-    var steps = 100
+    var steps = 50
     
     var body: some View {
         ZStack {
             ForEach(0..<steps) { value in
-                Circle()
+                Rectangle()
                     .inset(by: CGFloat(value))
                     .strokeBorder(LinearGradient(gradient: Gradient(colors: [
                         self.color(for: value, brightness: 1),
                         self.color(for: value, brightness: 0.5)
-                    ]), startPoint: .top, endPoint: .bottom), lineWidth: 2)
+                    ]), startPoint: .top, endPoint: .bottom), lineWidth: 20)
             }
         }
         .drawingGroup()
