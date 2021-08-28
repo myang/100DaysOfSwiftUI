@@ -9,8 +9,9 @@ import SwiftUI
 
 struct CheckoutView: View {
     @ObservedObject var order: Order
-    @State private var confirmationMessage = ""
-    @State private var showingConfirmation = false
+    @State private var alertTitle = ""
+    @State private var alertMsg = ""
+    @State private var showAlert = false
     
     var body: some View {
         GeometryReader {geo in
@@ -30,8 +31,8 @@ struct CheckoutView: View {
             }
         }
         .navigationBarTitle("Check out", displayMode: .inline)
-        .alert(isPresented: $showingConfirmation) {
-            Alert(title: Text("Thank you!"), message: Text(confirmationMessage), dismissButton: .default(Text("OK")))
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("OK")))
         }
     }
 
@@ -48,13 +49,21 @@ struct CheckoutView: View {
         request.httpBody = encoded
         
         URLSession.shared.dataTask(with: request) {data, response, error in
+            if let error = error {
+                self.alertTitle = "Sorry:("
+                self.alertMsg = error.localizedDescription
+                self.showAlert = true
+                return
+            }
+            
             guard let data = data else {
                 print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
                 return
             }
             if let decodedOrder = try? JSONDecoder().decode(Order.self, from: data) {
-                self.confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
-                self.showingConfirmation = true
+                self.alertTitle = "Thank you!"
+                self.alertMsg = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
+                self.showAlert = true
             } else {
                 print("Invalid response from server")
             }
