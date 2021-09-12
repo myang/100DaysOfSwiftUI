@@ -23,15 +23,13 @@ struct PersistenceController {
     // An initializer to load Core Data, optionally able
     // to use an in-memory store.
     init(inMemory: Bool = false) {
-        // If you didn't name your model Main you'll need
-        // to change this name below.
         container = NSPersistentContainer(name: "Bookworm")
 
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
 
-        container.loadPersistentStores { description, error in
+        container.loadPersistentStores {description, error in
             if let error = error {
                 fatalError("Error: \(error.localizedDescription)")
             }

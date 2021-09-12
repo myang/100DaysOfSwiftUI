@@ -9,16 +9,23 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.managedObjectContext) var context
     @FetchRequest(entity: Student.entity(), sortDescriptors: []) var students: FetchedResults<Student>
+    @FetchRequest(entity: Book.entity(), sortDescriptors: []) var books: FetchedResults<Student>
+    @State private var showingAddScreen = false
 
     var body: some View {
-        VStack {
-            List {
-                ForEach(students, id: \.id) {student in
-                    Text(student.name ?? "Unknown")
+        NavigationView {
+            Text("Count: \(books.count)")
+                .navigationBarTitle("Bookworm")
+                .navigationBarItems(trailing: Button(action: {
+                    self.showingAddScreen.toggle()
+                }) {
+                    Image(systemName: "plus")
+                })
+                .sheet(isPresented: $showingAddScreen) {
+                    AddBookView().environment(\.managedObjectContext, self.context)
                 }
-            }
             
             Button("Add") {
                 let firstNames = ["Ginny", "Harry", "Hermione", "Luna", "Ron"]
@@ -27,10 +34,10 @@ struct ContentView: View {
                 let chosenFirstName = firstNames.randomElement()!
                 let chosenLastName = lastNames.randomElement()!
                 
-                let student = Student(context: self.moc)
+                let student = Student(context: self.context)
                 student.id = UUID()
                 student.name = "\(chosenFirstName) \(chosenLastName)"
-                try? self.moc.save()
+                try? self.context.save()
             }
         }
     }
