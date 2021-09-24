@@ -11,22 +11,27 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) var context
     @FetchRequest(entity: Student.entity(), sortDescriptors: []) var students: FetchedResults<Student>
-    @FetchRequest(entity: Book.entity(), sortDescriptors: []) var books: FetchedResults<Student>
+    @FetchRequest(entity: Book.entity(), sortDescriptors: []) var books: FetchedResults<Book>
     @State private var showingAddScreen = false
 
     var body: some View {
         NavigationView {
-            Text("Count: \(books.count)")
-                .navigationBarTitle("Bookworm")
-                .navigationBarItems(trailing: Button(action: {
-                    self.showingAddScreen.toggle()
-                }) {
-                    Image(systemName: "plus")
-                })
-                .sheet(isPresented: $showingAddScreen) {
-                    AddBookView().environment(\.managedObjectContext, self.context)
+            List {
+                ForEach(books, id: \.self) { book in
+                    NavigationLink(destination: Text(book.title ?? "Unknown Title")) {
+                        EmojiRatingView(rating: book.rating)
+                            .font(.largeTitle)
+
+                        VStack(alignment: .leading) {
+                            Text(book.title ?? "Unknown Title")
+                                .font(.headline)
+                            Text(book.author ?? "Unknown Author")
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
-            
+            }
+                
             Button("Add") {
                 let firstNames = ["Ginny", "Harry", "Hermione", "Luna", "Ron"]
                 let lastNames = ["Granger", "Lovegood", "Potter", "Weasley"]
