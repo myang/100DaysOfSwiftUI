@@ -16,7 +16,7 @@ struct AddBookView: View {
     @State private var review = ""
     @Environment(\.presentationMode) var presentationMode
     
-    let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry"]
+    let genres = ["Nonfiction", "Technologies", "Science", "History", "Politics"]
     
     var body: some View {
         NavigationView {

@@ -10,13 +10,17 @@ import CoreData
 
 struct DetailView: View {
     let book: Book
+    @Environment(\.managedObjectContext) var context
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showingDeleteAlert = false
+    
     var body: some View {
         GeometryReader {geometry in
             VStack {
                 ZStack(alignment: .bottomTrailing) {
-                    Image(self.book.genre ?? "Fantasy")
+                    Image(self.book.genre ?? "Nonfiction")
                         .frame(maxWidth: geometry.size.width)
-                    Text(self.book.genre?.uppercased() ?? "FANTASY")
+                    Text(self.book.genre?.uppercased() ?? "Nonfiction")
                         .font(.caption)
                         .fontWeight(.black)
                         .padding(8)
@@ -40,6 +44,22 @@ struct DetailView: View {
             }
         }
         .navigationBarTitle(Text(book.title ?? "Unknown Book"), displayMode: .inline)
+        .navigationBarItems(trailing: Button(action: {
+            self.showingDeleteAlert = true
+        }) {
+            Image(systemName: "trash")
+        })
+        .alert(isPresented: $showingDeleteAlert) {
+            Alert(title: Text("Delete book"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
+                    self.deleteBook()
+                }, secondaryButton: .cancel()
+            )
+        }
+    }
+    
+    func deleteBook() {
+        context.delete(book)
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
@@ -50,7 +70,7 @@ struct DetailView_Previews: PreviewProvider {
         let book = Book(context: moc)
         book.title = "Test Book"
         book.author = "Test author"
-        book.genre = "Fantasy"
+        book.genre = "Nonfiction"
         book.rating = 4
         book.review = "This is a great book, I really enjoy it"
         
