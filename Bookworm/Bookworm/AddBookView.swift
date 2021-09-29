@@ -12,11 +12,11 @@ struct AddBookView: View {
     @State private var title = ""
     @State private var author = ""
     @State private var rating = 3
-    @State private var genre = "Nonfiction"
+    @State private var genre = "Fantasy"
     @State private var review = ""
     @Environment(\.presentationMode) var presentationMode
     
-    let genres = ["Nonfiction", "Technologies", "Science", "History", "Politics"]
+    let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
 
     
     var body: some View {

@@ -24,7 +24,7 @@ struct RatingView: View {
             
             ForEach(1..<maximumRating + 1) {number in
                 self.image(for: number)
-                    .foregroundColor(number > self.rating ? self.offColor : self.onColor)
+                    .foregroundColor(imageColor(for: number))
                     .onTapGesture {
                         self.rating = number
                     }
@@ -37,6 +37,16 @@ struct RatingView: View {
             return offImage ?? onImage
         } else {
             return onImage
+        }
+    }
+    
+    func imageColor(for number: Int) -> Color {
+        if number == rating && rating == 1 {
+            return Color.red
+        } else if number <= rating {
+            return onColor
+        } else {
+            return offColor
         }
     }
 }
