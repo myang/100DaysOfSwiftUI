@@ -25,6 +25,9 @@ struct ContentView: View {
             }
             
             Button("Save") {
+                self.context.automaticallyMergesChangesFromParent = true
+                self.context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+                
                 do {
                     try self.context.save()
                 } catch {
