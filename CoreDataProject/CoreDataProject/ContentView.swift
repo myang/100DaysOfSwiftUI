@@ -13,11 +13,11 @@ struct ContentView: View {
 
     @FetchRequest(entity: Ship.entity(), sortDescriptors: [], predicate: NSPredicate(format: "NOT name BEGINSWITH[c] %@", "e")) var ships: FetchedResults<Ship>
     
+    @State private var nameFilter = ""
+    
     var body: some View {
         VStack {
-            List (ships, id: \.self) {ship in
-                Text(ship.name ?? "Unknown")
-            }
+            FilterList(filter: nameFilter)
             
             Button("Add") {
                 let ship1 = Ship(context: self.context)
@@ -32,23 +32,19 @@ struct ContentView: View {
                 ship3.name = "Millennnium Falcon"
                 ship3.universe = "Star Wars"
 
-                let ship4 = Ship(context: self.context)
+                let ship4 = Ship(conte xt: self.context)
                 ship4.name = "Executor"
                 ship4.universe = "Star Wars"
                 
                 try? self.context.save()
             }
             
-            Button("Save") {
-                self.context.automaticallyMergesChangesFromParent = true
-                self.context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-                
-                do {
-                    try self.context.save()
-                } catch {
-                    print(error.localizedDescription)
-                    
-                }
+            Button("Show D*") {
+                self.nameFilter = "D"
+            }
+            
+            Button("Show M*") {
+                self.nameFilter = "M"
             }
         }
     }
