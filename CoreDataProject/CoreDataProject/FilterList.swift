@@ -6,18 +6,23 @@
 //
 
 import SwiftUI
+import CoreData
 
-struct FilterList: View {
-    var fetchRequest: FetchRequest<Ship>
+struct FilterList<T: NSManagedObject, Content: View>: View {
+    var fetchRequest: FetchRequest<T>
+    var ships: FetchedResults<T> {fetchRequest.wrappedValue}
+    
+    let content: (T) -> Content
     
     var body: some View {
         List(fetchRequest.wrappedValue, id: \.self) {ship in
-            Text("\(ship.wrappedName) \(ship.wrappedUniverse)")
+            self.content(ship)
         }
     }
     
-    init(filter: String) {
-        fetchRequest = FetchRequest<Ship>(entity: Ship.entity(), sortDescriptors: [], predicate: NSPredicate(format: "name BEGINSWITH %@", filter))
+    init(filterKey: String, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
+        fetchRequest = FetchRequest<T>(entity: T.entity(), sortDescriptors: [], predicate: NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue))
+        self.content = content
     }
 }
 
