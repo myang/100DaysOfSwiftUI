@@ -10,42 +10,49 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var context
-
+    @FetchRequest(entity: Country.entity(), sortDescriptors: []) var countries: FetchedResults<Country>
+    
     @State private var nameFilter = ""
     
     var body: some View {
         VStack {
-            FilterList(filterKey: "name", filterValue: nameFilter) {(ship: Ship) in
-                Text("\(ship.wrappedName) \(ship.wrappedUniverse)")
+            List {
+                ForEach(countries, id: \.self) {country in
+                    Section(header: Text(country.wrappedFullName)) {
+                        ForEach(country.candyArray, id: \.self) {candy in
+                            Text(candy.wrappedName)
+                        }
+                    }
+                }
             }
             
             Button("Add") {
-                let ship1 = Ship(context: self.context)
-                ship1.name = "Enterprise"
-                ship1.universe = "Star Trek"
+                let candy1 = Candy(context: self.context)
+                candy1.name = "Mars"
+                candy1.origin = Country(context: self.context)
+                candy1.origin?.shortName = "UK"
+                candy1.origin?.fullName = "United Kingdom"
 
-                let ship2 = Ship(context: self.context)
-                ship2.name = "Defiant"
-                ship2.universe = "Star Trek"
+                let candy2 = Candy(context: self.context)
+                candy2.name = "KitKat"
+                candy2.origin = Country(context: self.context)
+                candy2.origin?.shortName = "UK"
+                candy2.origin?.fullName = "United Kingdom"
 
-                let ship3 = Ship(context: self.context)
-                ship3.name = "Millennnium Falcon"
-                ship3.universe = "Star Wars"
+                let candy3 = Candy(context: self.context)
+                candy3.name = "Twix"
+                candy3.origin = Country(context: self.context)
+                candy3.origin?.shortName = "UK"
+                candy3.origin?.fullName = "Austria"
 
-                let ship4 = Ship(context: self.context)
-                ship4.name = "Executor"
-                ship4.universe = "Star Wars"
-                
+                let candy4 = Candy(context: self.context)
+                candy4.name = "Toblerone"
+                candy4.origin = Country(context: self.context)
+                candy4.origin?.shortName = "CH"
+                candy4.origin?.fullName = "Switzerland"
+
                 try? self.context.save()
-            }
-            
-            Button("Show D*") {
-                self.nameFilter = "D"
-            }
-            
-            Button("Show M*") {
-                self.nameFilter = "M"
-            }
+            }            
         }
     }
 }
