@@ -1,49 +1,49 @@
 {
   "images" : [
     {
-      "filename" : "blu-logo-sq-40px.png",
+      "filename" : "blu_logo_v3_40px.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "blu-logo-sq-60px.png",
+      "filename" : "blu_logo_v3_60px.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "blu-logo-sq-58px.png",
+      "filename" : "blu_logo_v3_58px.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "blu-logo-sq-87px.png",
+      "filename" : "blu_logo_v3_87px.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "blu-logo-sq-80px.png",
+      "filename" : "blu_logo_v3_80px.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "blu-logo-sq-120px-1.png",
+      "filename" : "blu_logo_v3_120px-1.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "blu-logo-sq-120px.png",
+      "filename" : "blu_logo_v3_120px.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "blu-logo-sq-180px.png",
+      "filename" : "blu_logo_v3_180px.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
@@ -94,7 +94,7 @@
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "blu-logo-sq-1024px.png",
+      "filename" : "blu_logo_v3_1024px.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
