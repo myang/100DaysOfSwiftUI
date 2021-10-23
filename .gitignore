@@ -1,7 +1,6 @@
 # ignore everything starting from current folder: /*
 # 
 **/.DS_Store
-**/*.xcodeproj/
 *.xcuserstate
 **/Products/
 
