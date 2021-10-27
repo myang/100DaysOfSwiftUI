@@ -66,10 +66,10 @@
 		3269258C26849E8A0004B19A /* Moonshot */ = {
 			isa = PBXGroup;
 			children = (
-				324FA66526A855AE00785A0F /* AstronautView.swift */,
-				3271C46626A5A12A00EE250F /* astronauts.json */,
 				3271C46A26A5A19700EE250F /* Astronaut.swift */,
+				324FA66526A855AE00785A0F /* AstronautView.swift */,
 				3271C46C26A5A44100EE250F /* Bundle-Decodable.swift */,
+				3271C46626A5A12A00EE250F /* astronauts.json */,
 				3271C46726A5A12A00EE250F /* missions.json */,
 				3269258D26849E8A0004B19A /* MoonshotApp.swift */,
 				3269258F26849E8A0004B19A /* ContentView.swift */,

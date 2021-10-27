@@ -54,6 +54,8 @@ struct ContentView: View {
     }
 
     func loadData() {
+//        let users: [User] = Bundle.main.decode("friendface.json")
+//        self.users = users
         guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
                 print("Invalid URL")
                 return
@@ -62,15 +64,15 @@ struct ContentView: View {
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request) {data, response, error in
             if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
+                if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
                     DispatchQueue.main.async {
-                    self.users = decodedResponse.users
-                    return
+                        self.users = decodedResponse
+                        return
                     }
+                } else {
+                    print("Fetch data failed: \(error?.localizedDescription ?? "Unknown error")")
                 }
             }
-
-            print("Fetch data failed: \(error?.localizedDescription ?? "Unknown error")")
         }.resume()
     }
 
