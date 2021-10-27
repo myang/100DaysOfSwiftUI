@@ -15,18 +15,29 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    
+    @State private var users = [User]()
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(users) { user in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("\(user.name)")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(user.name)
                     }
                 }
                 .onDelete(perform: deleteItems)
+
+//                ForEach(items) { item in
+//                    NavigationLink {
+//                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+//                    } label: {
+//                        Text(item.timestamp!, formatter: itemFormatter)
+//                    }
+//                }
+//                .onDelete(perform: deleteItems)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -38,8 +49,29 @@ struct ContentView: View {
                     }
                 }
             }
-            Text("Select an item")
+            .onAppear(perform: loadData)
         }
+    }
+
+    func loadData() {
+        guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
+                print("Invalid URL")
+                return
+        }
+
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request) {data, response, error in
+            if let data = data {
+                if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
+                    DispatchQueue.main.async {
+                    self.users = decodedResponse.users
+                    return
+                    }
+                }
+            }
+
+            print("Fetch data failed: \(error?.localizedDescription ?? "Unknown error")")
+        }.resume()
     }
 
     private func addItem() {
@@ -80,6 +112,29 @@ private let itemFormatter: DateFormatter = {
     formatter.timeStyle = .medium
     return formatter
 }()
+
+struct Response: Codable {
+    let users: [User]
+}
+
+struct User: Codable, Identifiable {
+    struct Friend: Codable, Identifiable {
+        let id: String
+        let name: String
+    }
+
+    let id: String
+    let isActive: Bool
+    let name: String
+    let age: Int
+    let company: String
+    let email: String
+    let address: String
+    let about: String
+    let registered: String
+    let tags: [String]
+    let friends: [Friend]
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
