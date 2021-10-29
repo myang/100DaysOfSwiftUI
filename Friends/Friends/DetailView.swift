@@ -8,22 +8,54 @@
 import SwiftUI
 
 struct DetailView: View {
+    let users: [User]
     let user: User
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Age: \(user.age)")
-            Text("Company: \(user.company)")
-            Text("Email: \(user.email)")
-            Text("Address: \(user.address)").fixedSize(horizontal: false, vertical: true)
-            Text("About: \(user.about)").fixedSize(horizontal: false, vertical: true)
+        GeometryReader {geometry in
+            VStack(alignment: .leading) {
+                Group {
+                    Text("**Age**:\n \(user.age)")
+                    Spacer()
+                    Text("**Company**:\n \(user.company)")
+                    Spacer()
+                    Text("**Email**:\n \(user.email)")
+                    Spacer()
+                    Text("**Address**:\n \(user.address)")
+                    Spacer()
+                }
+                Group {
+                    Text("**Friends**:")
+                    
+                    ForEach(user.friends, id: \.id) {friend in
+                        Button("\(friend.name)") {
+                            DetailView(users: users, user: friend)
+                        }
+                    }
+
+                    ScrollView(.vertical) {
+                        Text("**About**:\n \(user.about)")
+                    }
+                }
+            }
+            .padding()
+        }.navigationTitle("\(user.name)")
+    }
+    
+    init(users: [User], user: User) {
+        self.users = users
+        
+        if let match = users.first(where: {$0.name == user.name}) {
+            self.user = match
+        } else {
+            self.user = user
         }
-        .frame(width: 300, height: 20)
+        
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(user: User(id: "", isActive: false, name: "", age: 0, company: "", email: "", address: "", about: "", registered: "", tags: [String](), friends: [User.Friend]()))
+        DetailView(users: [User](), user: User(id: "", isActive: false, name: "", age: 0, company: "", email: "", address: "", about: "", registered: "", tags: [String](), friends: [User.Friend]()))
     }
 }

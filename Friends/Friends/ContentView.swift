@@ -22,17 +22,15 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(users) { user in
-                    NavigationLink (destination: DetailView(user: user)) {
+                    NavigationLink (destination: DetailView(users: users, user: user)) {
                         Text("\(user.name)")
                     }
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+//                    .navigationTitle("\(user.name)")
                 }
             }
             .onAppear(perform: loadData)
+            .navigationTitle("Friends")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 
@@ -67,7 +65,7 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct Response: Codable {
+struct Users: Codable {
     let users: [User]
 }
 
