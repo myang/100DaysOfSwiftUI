@@ -14,8 +14,6 @@
 		32D438FB2724437000BC7636 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D438FA2724437000BC7636 /* ContentView.swift */; };
 		32D438FD2724437100BC7636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D438FC2724437100BC7636 /* Assets.xcassets */; };
 		32D439002724437100BC7636 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D438FF2724437100BC7636 /* Preview Assets.xcassets */; };
-		32D439022724437100BC7636 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D439012724437100BC7636 /* Persistence.swift */; };
-		32D439052724437100BC7636 /* Friends.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32D439032724437100BC7636 /* Friends.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +25,6 @@
 		32D438FA2724437000BC7636 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		32D438FC2724437100BC7636 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32D438FF2724437100BC7636 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		32D439012724437100BC7636 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		32D439042724437100BC7636 /* Friends.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Friends.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,9 +62,7 @@
 				3258D3CC2729DB1B00D1451E /* DetailView.swift */,
 				3258D3CA272979ED00D1451E /* Bundle-Decodable.swift */,
 				32D438F82724437000BC7636 /* FriendsApp.swift */,
-				32D439012724437100BC7636 /* Persistence.swift */,
 				3258D3C82729764A00D1451E /* friendface.json */,
-				32D439032724437100BC7636 /* Friends.xcdatamodeld */,
 				32D438FE2724437100BC7636 /* Preview Content */,
 			);
 			path = Friends;
@@ -153,12 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32D439022724437100BC7636 /* Persistence.swift in Sources */,
 				3258D3CD2729DB1B00D1451E /* DetailView.swift in Sources */,
 				32D438FB2724437000BC7636 /* ContentView.swift in Sources */,
 				3258D3CB272979ED00D1451E /* Bundle-Decodable.swift in Sources */,
 				32D438F92724437000BC7636 /* FriendsApp.swift in Sources */,
-				32D439052724437100BC7636 /* Friends.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,19 +357,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		32D439032724437100BC7636 /* Friends.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				32D439042724437100BC7636 /* Friends.xcdatamodel */,
-			);
-			currentVersion = 32D439042724437100BC7636 /* Friends.xcdatamodel */;
-			path = Friends.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 32D438ED2724437000BC7636 /* Project object */;
 }

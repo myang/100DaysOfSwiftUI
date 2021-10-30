@@ -27,9 +27,9 @@ struct DetailView: View {
                 Group {
                     Text("**Friends**:")
                     
-                    ForEach(user.friends, id: \.id) {friend in
-                        Button("\(friend.name)") {
-                            DetailView(users: users, user: friend)
+                    ForEach(user.friends) {friend in
+                        if let match = users.first(where: {$0.name == friend.name}) {
+                            NavigationLink("\(friend.name)", destination: DetailView(users: users, user: match))
                         }
                     }
 
@@ -40,17 +40,6 @@ struct DetailView: View {
             }
             .padding()
         }.navigationTitle("\(user.name)")
-    }
-    
-    init(users: [User], user: User) {
-        self.users = users
-        
-        if let match = users.first(where: {$0.name == user.name}) {
-            self.user = match
-        } else {
-            self.user = user
-        }
-        
     }
 }
 

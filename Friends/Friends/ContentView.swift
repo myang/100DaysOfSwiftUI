@@ -6,17 +6,9 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-    
-    @State private var users = [User]()
+   @State private var users = [User]()
 
     var body: some View {
         NavigationView {
@@ -25,7 +17,6 @@ struct ContentView: View {
                     NavigationLink (destination: DetailView(users: users, user: user)) {
                         Text("\(user.name)")
                     }
-//                    .navigationTitle("\(user.name)")
                 }
             }
             .onAppear(perform: loadData)
@@ -58,17 +49,6 @@ struct ContentView: View {
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
-struct Users: Codable {
-    let users: [User]
-}
-
 struct User: Codable, Identifiable {
     struct Friend: Codable, Identifiable {
         let id: String
@@ -90,6 +70,6 @@ struct User: Codable, Identifiable {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }
