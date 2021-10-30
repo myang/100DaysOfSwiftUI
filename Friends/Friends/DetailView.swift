@@ -13,32 +13,32 @@ struct DetailView: View {
     
     var body: some View {
         GeometryReader {geometry in
-            VStack(alignment: .leading) {
-                Group {
-                    Text("**Age**:\n \(user.age)")
-                    Spacer()
-                    Text("**Company**:\n \(user.company)")
-                    Spacer()
-                    Text("**Email**:\n \(user.email)")
-                    Spacer()
-                    Text("**Address**:\n \(user.address)")
-                    Spacer()
-                }
-                Group {
-                    Text("**Friends**:")
-                    
-                    ForEach(user.friends) {friend in
-                        if let match = users.first(where: {$0.name == friend.name}) {
-                            NavigationLink("\(friend.name)", destination: DetailView(users: users, user: match))
-                        }
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
+                    Group {
+                        Text("**Age**:\n \(user.age)")
+                        Spacer()
+                        Text("**Company**:\n \(user.company)")
+                        Spacer()
+                        Text("**Email**:\n \(user.email)")
+                        Spacer()
+                        Text("**Address**:\n \(user.address)")
+                        Spacer()
                     }
-
-                    ScrollView(.vertical) {
+                    Group {
+                        Text("**Friends**:")
+                        
+                        ForEach(user.friends) {friend in
+                            if let match = users.first(where: {$0.name == friend.name}) {
+                                NavigationLink("\(friend.name)", destination: DetailView(users: users, user: match))
+                            }
+                        }
+                        Spacer()
                         Text("**About**:\n \(user.about)")
                     }
                 }
+                .padding()
             }
-            .padding()
         }.navigationTitle("\(user.name)")
     }
 }
