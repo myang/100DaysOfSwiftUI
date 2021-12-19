@@ -10,16 +10,80 @@
 		3258D3C92729764A00D1451E /* friendface.json in Resources */ = {isa = PBXBuildFile; fileRef = 3258D3C82729764A00D1451E /* friendface.json */; };
 		3258D3CB272979ED00D1451E /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258D3CA272979ED00D1451E /* Bundle-Decodable.swift */; };
 		3258D3CD2729DB1B00D1451E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258D3CC2729DB1B00D1451E /* DetailView.swift */; };
+		32A36CB0272D85BC00B00A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A36CAF272D85BC00B00A39 /* Assets.xcassets */; };
+		32A36CB6272D85BC00B00A39 /* Friends4Watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 32A36CB5272D85BC00B00A39 /* Friends4Watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		32A36CBB272D85BC00B00A39 /* FriendsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A36CBA272D85BC00B00A39 /* FriendsApp.swift */; };
+		32A36CBD272D85BC00B00A39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A36CBC272D85BC00B00A39 /* ContentView.swift */; };
+		32A36CBF272D85BC00B00A39 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A36CBE272D85BC00B00A39 /* NotificationController.swift */; };
+		32A36CC1272D85BC00B00A39 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A36CC0272D85BC00B00A39 /* NotificationView.swift */; };
+		32A36CC3272D85BC00B00A39 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A36CC2272D85BC00B00A39 /* ComplicationController.swift */; };
+		32A36CC5272D85BD00B00A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A36CC4272D85BD00B00A39 /* Assets.xcassets */; };
+		32A36CC8272D85BD00B00A39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A36CC7272D85BD00B00A39 /* Preview Assets.xcassets */; };
+		32A36CCD272D85BD00B00A39 /* Friends4Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 32A36CAD272D85BC00B00A39 /* Friends4Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		32D438F92724437000BC7636 /* FriendsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D438F82724437000BC7636 /* FriendsApp.swift */; };
 		32D438FB2724437000BC7636 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D438FA2724437000BC7636 /* ContentView.swift */; };
 		32D438FD2724437100BC7636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D438FC2724437100BC7636 /* Assets.xcassets */; };
 		32D439002724437100BC7636 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D438FF2724437100BC7636 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		32A36CB7272D85BC00B00A39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32D438ED2724437000BC7636 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32A36CB4272D85BC00B00A39;
+			remoteInfo = "Friends4Watch WatchKit Extension";
+		};
+		32A36CCB272D85BD00B00A39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32D438ED2724437000BC7636 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32A36CAC272D85BC00B00A39;
+			remoteInfo = Friends4Watch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		32A36CD1272D85BD00B00A39 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				32A36CB6272D85BC00B00A39 /* Friends4Watch WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32A36CD5272D85BD00B00A39 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				32A36CCD272D85BD00B00A39 /* Friends4Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3258D3C82729764A00D1451E /* friendface.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = friendface.json; sourceTree = "<group>"; };
 		3258D3CA272979ED00D1451E /* Bundle-Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		3258D3CC2729DB1B00D1451E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		32A36CAD272D85BC00B00A39 /* Friends4Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends4Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32A36CAF272D85BC00B00A39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		32A36CB5272D85BC00B00A39 /* Friends4Watch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Friends4Watch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32A36CBA272D85BC00B00A39 /* FriendsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsApp.swift; sourceTree = "<group>"; };
+		32A36CBC272D85BC00B00A39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		32A36CBE272D85BC00B00A39 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		32A36CC0272D85BC00B00A39 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		32A36CC2272D85BC00B00A39 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		32A36CC4272D85BD00B00A39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		32A36CC7272D85BD00B00A39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		32A36CC9272D85BD00B00A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32A36CCA272D85BD00B00A39 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		32D438F52724437000BC7636 /* Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D438F82724437000BC7636 /* FriendsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsApp.swift; sourceTree = "<group>"; };
 		32D438FA2724437000BC7636 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -28,6 +92,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		32A36CB2272D85BC00B00A39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32D438F22724437000BC7636 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +109,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32A36CAE272D85BC00B00A39 /* Friends4Watch */ = {
+			isa = PBXGroup;
+			children = (
+				32A36CAF272D85BC00B00A39 /* Assets.xcassets */,
+			);
+			path = Friends4Watch;
+			sourceTree = "<group>";
+		};
+		32A36CB9272D85BC00B00A39 /* Friends4Watch WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				32A36CBA272D85BC00B00A39 /* FriendsApp.swift */,
+				32A36CBC272D85BC00B00A39 /* ContentView.swift */,
+				32A36CBE272D85BC00B00A39 /* NotificationController.swift */,
+				32A36CC0272D85BC00B00A39 /* NotificationView.swift */,
+				32A36CC2272D85BC00B00A39 /* ComplicationController.swift */,
+				32A36CC4272D85BD00B00A39 /* Assets.xcassets */,
+				32A36CC9272D85BD00B00A39 /* Info.plist */,
+				32A36CCA272D85BD00B00A39 /* PushNotificationPayload.apns */,
+				32A36CC6272D85BD00B00A39 /* Preview Content */,
+			);
+			path = "Friends4Watch WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		32A36CC6272D85BD00B00A39 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				32A36CC7272D85BD00B00A39 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		32D438EC2724437000BC7636 = {
 			isa = PBXGroup;
 			children = (
 				32D438F72724437000BC7636 /* Friends */,
+				32A36CAE272D85BC00B00A39 /* Friends4Watch */,
+				32A36CB9272D85BC00B00A39 /* Friends4Watch WatchKit Extension */,
 				32D438F62724437000BC7636 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				32D438F52724437000BC7636 /* Friends.app */,
+				32A36CAD272D85BC00B00A39 /* Friends4Watch.app */,
+				32A36CB5272D85BC00B00A39 /* Friends4Watch WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,6 +186,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		32A36CAC272D85BC00B00A39 /* Friends4Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32A36CD2272D85BD00B00A39 /* Build configuration list for PBXNativeTarget "Friends4Watch" */;
+			buildPhases = (
+				32A36CAB272D85BC00B00A39 /* Resources */,
+				32A36CD1272D85BD00B00A39 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				32A36CB8272D85BC00B00A39 /* PBXTargetDependency */,
+			);
+			name = Friends4Watch;
+			productName = Friends4Watch;
+			productReference = 32A36CAD272D85BC00B00A39 /* Friends4Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		32A36CB4272D85BC00B00A39 /* Friends4Watch WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32A36CCE272D85BD00B00A39 /* Build configuration list for PBXNativeTarget "Friends4Watch WatchKit Extension" */;
+			buildPhases = (
+				32A36CB1272D85BC00B00A39 /* Sources */,
+				32A36CB2272D85BC00B00A39 /* Frameworks */,
+				32A36CB3272D85BC00B00A39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Friends4Watch WatchKit Extension";
+			productName = "Friends4Watch WatchKit Extension";
+			productReference = 32A36CB5272D85BC00B00A39 /* Friends4Watch WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		32D438F42724437000BC7636 /* Friends */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32D439082724437100BC7636 /* Build configuration list for PBXNativeTarget "Friends" */;
@@ -86,10 +227,12 @@
 				32D438F12724437000BC7636 /* Sources */,
 				32D438F22724437000BC7636 /* Frameworks */,
 				32D438F32724437000BC7636 /* Resources */,
+				32A36CD5272D85BD00B00A39 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				32A36CCC272D85BD00B00A39 /* PBXTargetDependency */,
 			);
 			name = Friends;
 			productName = Friends;
@@ -103,9 +246,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					32A36CAC272D85BC00B00A39 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					32A36CB4272D85BC00B00A39 = {
+						CreatedOnToolsVersion = 13.1;
+					};
 					32D438F42724437000BC7636 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -125,11 +274,30 @@
 			projectRoot = "";
 			targets = (
 				32D438F42724437000BC7636 /* Friends */,
+				32A36CAC272D85BC00B00A39 /* Friends4Watch */,
+				32A36CB4272D85BC00B00A39 /* Friends4Watch WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		32A36CAB272D85BC00B00A39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32A36CB0272D85BC00B00A39 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32A36CB3272D85BC00B00A39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32A36CC8272D85BD00B00A39 /* Preview Assets.xcassets in Resources */,
+				32A36CC5272D85BD00B00A39 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32D438F32724437000BC7636 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -143,6 +311,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		32A36CB1272D85BC00B00A39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32A36CBF272D85BC00B00A39 /* NotificationController.swift in Sources */,
+				32A36CBD272D85BC00B00A39 /* ContentView.swift in Sources */,
+				32A36CC3272D85BC00B00A39 /* ComplicationController.swift in Sources */,
+				32A36CBB272D85BC00B00A39 /* FriendsApp.swift in Sources */,
+				32A36CC1272D85BC00B00A39 /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32D438F12724437000BC7636 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,7 +336,134 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		32A36CB8272D85BC00B00A39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32A36CB4272D85BC00B00A39 /* Friends4Watch WatchKit Extension */;
+			targetProxy = 32A36CB7272D85BC00B00A39 /* PBXContainerItemProxy */;
+		};
+		32A36CCC272D85BD00B00A39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32A36CAC272D85BC00B00A39 /* Friends4Watch */;
+			targetProxy = 32A36CCB272D85BD00B00A39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		32A36CCF272D85BD00B00A39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Friends4Watch WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = KLXN3CVK5J;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Friends4Watch WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Friends4Watch WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blucode.Friends.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		32A36CD0272D85BD00B00A39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Friends4Watch WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = KLXN3CVK5J;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Friends4Watch WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Friends4Watch WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blucode.Friends.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+		32A36CD3272D85BD00B00A39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KLXN3CVK5J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Friends4Watch_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = Friends4Watch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.blucode.Friends;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blucode.Friends.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		32A36CD4272D85BD00B00A39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KLXN3CVK5J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Friends4Watch_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = Friends4Watch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.blucode.Friends;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blucode.Friends.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
 		32D439062724437100BC7636 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -338,6 +645,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		32A36CCE272D85BD00B00A39 /* Build configuration list for PBXNativeTarget "Friends4Watch WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32A36CCF272D85BD00B00A39 /* Debug */,
+				32A36CD0272D85BD00B00A39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32A36CD2272D85BD00B00A39 /* Build configuration list for PBXNativeTarget "Friends4Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32A36CD3272D85BD00B00A39 /* Debug */,
+				32A36CD4272D85BD00B00A39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		32D438F02724437000BC7636 /* Build configuration list for PBXProject "Friends" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
